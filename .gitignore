@@ -1,0 +1,5 @@
+.DS_Store
+.netlify
+coverage
+node_modules
+dist

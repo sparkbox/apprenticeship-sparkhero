@@ -1,0 +1,61 @@
+{
+  "name": "apprentice-project-starter",
+  "version": "1.0.0",
+  "description": "A basic starter repository for apprentice side projects that includes Jest, Sass, and Webpack.",
+  "scripts": {
+    "predev": "npm run checkNodeVersion",
+    "dev": "npm-run-all --parallel dev:api dev:app",
+    "dev:app": "webpack serve --mode development --port 8080",
+    "dev:api": "netlify functions:serve --port 8081",
+    "build": "webpack build --mode production",
+    "build:dev": "webpack build --mode development",
+    "test": "jest",
+    "test:coverage": "npm run test -- --coverage",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "eslint ./ --ignore-path .gitignore",
+    "lint:css": "stylelint src/assets/scss/**/*.scss",
+    "checkNodeVersion": "check-node-version --package"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sparkbox/apprentice-project-starter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sparkbox/apprentice-project-starter/issues"
+  },
+  "homepage": "https://github.com/sparkbox/apprentice-project-starter#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/node": "^7.16.8",
+    "@babel/preset-env": "^7.16.11",
+    "babel-jest": "^27.5.1",
+    "check-node-version": "^4.2.1",
+    "css-loader": "^6.6.0",
+    "dotenv": "^16.0.0",
+    "dotenv-webpack": "^7.1.0",
+    "eslint": "^8.9.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.25.4",
+    "html-webpack-plugin": "^5.5.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.5.1",
+    "netlify-cli": "^10.1.0",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.49.9",
+    "sass-loader": "^12.6.0",
+    "style-loader": "^3.3.1",
+    "stylelint": "^14.6.1",
+    "stylelint-config-recommended-scss": "^6.0.0",
+    "stylelint-config-standard": "^25.0.0",
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  }
+}

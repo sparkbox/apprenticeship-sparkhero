@@ -1,0 +1,5 @@
+[functions]
+  directory = "api"
+
+[functions.image]
+  included_files = ["api/data/images/*.jpg"]

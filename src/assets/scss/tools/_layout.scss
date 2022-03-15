@@ -1,0 +1,10 @@
+@use "sass:map";
+@use "../variables/layout" as layout;
+
+/**
+ * Mixin to delist unordered or ordered lists.
+ */
+@mixin delist {
+  list-style: none;
+  padding-left: 0;
+}
