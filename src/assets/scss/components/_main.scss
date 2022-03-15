@@ -1,0 +1,6 @@
+@use "../variables" as v;
+
+main {
+  max-width: v.$viewport-md;
+  margin: 0 auto;
+}

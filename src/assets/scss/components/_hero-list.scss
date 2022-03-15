@@ -1,0 +1,48 @@
+@use "../tools" as t;
+@use "../variables" as v;
+
+.hero-list {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  @include t.delist;
+}
+
+.hero {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  overflow: hidden;
+
+  @include t.xsmall {
+    width: 50%;
+  }
+
+  @include t.small {
+    width: 33%;
+  }
+
+  @include t.medium {
+    width: 25%;
+  }
+}
+
+.hero__inner {
+  width: 100%;
+  margin: 0 v.$space-small;
+  padding: v.$space-medium;
+  background-color: white;
+  border-radius: v.$border-radius;
+}
+
+.hero__name {
+  text-align: center;
+  margin-top: 0;
+}
+
+.hero__image {
+  border-radius: v.$border-radius;
+}

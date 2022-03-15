@@ -1,0 +1,7 @@
+@use "../variables" as v;
+
+header {
+  text-align: center;
+  color: v.$orange;
+  text-shadow: -0.1em 0.03em 0 v.$blue;
+}

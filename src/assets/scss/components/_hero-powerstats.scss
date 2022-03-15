@@ -1,0 +1,37 @@
+@use "../tools" as t;
+@use "../variables" as v;
+
+.hero__powerstats {
+  @include t.delist;
+
+  width: 100%;
+  margin-top: v.$space-medium;
+}
+
+.hero__powerstat {
+  &:not(:last-of-type) {
+    margin-bottom: v.$space-large;
+  }
+}
+
+.hero__powerstat-label {
+  margin: 0;
+}
+
+.hero__powerstat-graph {
+  border-radius: v.$border-radius;
+  height: 0.3rem;
+  margin-top: 0;
+
+  .hero__powerstat--intelligence & {
+    background-color: v.$orange;
+  }
+
+  .hero__powerstat--strength & {
+    background-color: v.$green;
+  }
+
+  .hero__powerstat--combat & {
+    background-color: v.$purple;
+  }
+}

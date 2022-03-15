@@ -1,0 +1,12 @@
+@use "../variables" as v;
+
+.toolbar-utility {
+  text-align: right;
+  margin: 0 v.$space-small v.$space-medium;
+}
+
+.toolbar-utility__header {
+  font-size: 1.2rem;
+  margin-right: v.$space-large;
+  display: inline;
+}

@@ -1,0 +1,20 @@
+@use "sass:map";
+
+$root-font-size: 16px;
+
+$size-map: (
+  "xsmall": $root-font-size * 0.25,
+  "small": $root-font-size * 0.75,
+  "medium": $root-font-size,
+  "large": $root-font-size * 1.25,
+  "xlarge": $root-font-size * 1.75,
+);
+
+$border-radius: 0.75rem;
+
+$side-padding: map.get($size-map, "large");
+$space-large: map.get($size-map, "large");
+$space-medium: map.get($size-map, "medium");
+$space-small: map.get($size-map, "small");
+$space-xlarge: map.get($size-map, "xlarge");
+$space-xsmall: map.get($size-map, "xsmall");
