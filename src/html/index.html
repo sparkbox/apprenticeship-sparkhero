@@ -8,6 +8,7 @@
       <h1 class="header">Sparkhero!</h1>
     </header>
     <main>
+
       <div class="toolbar">
         <div id="hero-filter-publisher" class="toolbar-utility">
           <h3 class="toolbar-utility__header">Publisher</h3>
@@ -30,7 +31,7 @@
         <li class="hero">
           <div class="hero__inner">
             <h3 class="hero__name">Batman</h3>
-            <img class="hero__image" src="http://localhost:8081/images/70-batman.jpg" width="100%" height="auto" />
+            <img class="hero__image" src="<%= htmlWebpackPlugin.options.imageApiUrl %>/70" width="100%" height="auto" />
             <ul class="hero__powerstats">
               <li class="hero__powerstat hero__powerstat--intelligence">
                 <p class="hero__powerstat-label">Intelligence</p>
@@ -55,7 +56,7 @@
         <li class="hero">
           <div class="hero__inner">
             <h3 class="hero__name">Catwoman</h3>
-            <img class="hero__image" src="http://localhost:8081/images/165-catwoman.jpg" width="100%" height="auto" />
+            <img class="hero__image" src="<%= htmlWebpackPlugin.options.imageApiUrl %>/165" width="100%" height="auto" />
             <ul class="hero__powerstats">
               <li class="hero__powerstat hero__powerstat--intelligence">
                 <p class="hero__powerstat-label">Intelligence</p>
@@ -81,7 +82,7 @@
         <li class="hero">
           <div class="hero__inner">
             <h3 class="hero__name">Storm</h3>
-            <img class="hero__image" src="http://localhost:8081/images/638-storm.jpg" width="100%" height="auto" />
+            <img class="hero__image" src="<%= htmlWebpackPlugin.options.imageApiUrl %>/638" width="100%" height="auto" />
             <ul class="hero__powerstats">
               <li class="hero__powerstat hero__powerstat--intelligence">
                 <p class="hero__powerstat-label">Intelligence</p>
@@ -107,7 +108,7 @@
         <li class="hero">
           <div class="hero__inner">
             <h3 class="hero__name">Spider-Man</h3>
-            <img class="hero__image" src="http://localhost:8081/images/620-spider-man.jpg" width="100%" height="auto" />
+            <img class="hero__image" src="<%= htmlWebpackPlugin.options.imageApiUrl %>/620" width="100%" height="auto" />
             <ul class="hero__powerstats">
               <li class="hero__powerstat hero__powerstat--intelligence">
                 <p class="hero__powerstat-label">Intelligence</p>

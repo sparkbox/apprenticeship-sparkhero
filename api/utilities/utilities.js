@@ -1,9 +1,16 @@
-import dataHerosAll from '../data/all.json';
+const dataHerosAll = require('../data/all.json');
 
-export const allHeros = dataHerosAll;
+const heroIdsAll = dataHerosAll.map(({ id }) => id);
 
-export const heroIdsAll = dataHerosAll.map(({ id }) => id);
+exports.allHeros = dataHerosAll;
 
-export const heroIdIsValid = (id) => heroIdsAll.includes(id);
+exports.heroIdsAll = heroIdsAll;
 
-export const getHeroById = (id) => dataHerosAll.find(({ id: _id }) => id === _id);
+exports.heroIdIsValid = (id) => heroIdsAll.includes(id);
+
+exports.getHeroById = (id) => dataHerosAll.find(({ id: _id }) => id === _id);
+
+exports.getIdFromPath = (path) => {
+  const segments = path.split('/').filter((e) => e);
+  return segments[segments.length - 1];
+};

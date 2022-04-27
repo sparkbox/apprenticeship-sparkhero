@@ -18,9 +18,13 @@ SparkHero is two things: an app that consumes character data, and and API that s
 
 ## Running the Project
 
-For the most part, you'll be running `npm run dev`. This command will run SparkHero in development mode on your local machine at <http://localhost:8080> and the API that supplies the data at <http://localhost:8081>. Running in development mode will automatically update SparkHero in the browser using [hot module replacement][Webpack-HotModule] without _actually_ reloading the project. This means you can make change to your code and see the results quickly.
+For the most part, you'll be running `npm run dev`. This command will run SparkHero in development mode on your local machine at <http://localhost:8080> and the API that supplies the data at <http://localhost:8080/api>. Running in development mode will automatically update SparkHero in the browser using [hot module replacement][Webpack-HotModule] without _actually_ reloading the project. This means you can make change to your code and see the results quickly.
 
 Running SparkHero in development mode is different than production mode. In production mode, the hot module replacement and live reloading are disabled. These production builds of the application are generally smaller and are focused on performance. While development mode is great for local development, the production builds are what we'll be using if SparkHero is deployed.
+
+## Deployment
+
+The main branch of SparkHero is deployed automatically to <https://sparkhero.netlify.app/> via a GitHub action. When you submit PRs, your branch will automatically be deployed to a PR branch that can be used by developers reviewing your PR. The URL of this deployed branch will be automatically posted to your PR in GitHub once deployment is complete.
 
 ## Available APIs
 
@@ -28,9 +32,9 @@ Our SparkHero app needs data and luckily, it comes with a sidekick: the SparkHer
 
 | Endpoint  | Method | Description |
 | ------------- | ------------- |------------- |
-| `/all` | `GET` | Return all all characters  |
-| `/id/{CHARACTER ID}` | `GET` | Return the information for a specific character based on their ID  |
-| `/images/{IMAGE_NAME}` | `GET` | Return the image for a character based on the image name from their biographical data  |
+| `/api/all` | `GET` | Return all all characters  |
+| `/api/id/{CHARACTER ID}` | `GET` | Return the information for a specific character based on their ID  |
+| `/api/images/{IMAGE_NAME}` | `GET` | Return the image for a character based on the image name from their biographical data  |
 
 ## All Available Commands
 

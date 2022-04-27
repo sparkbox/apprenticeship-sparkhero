@@ -2,6 +2,8 @@ const path = require('path');
 const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+require('dotenv').config();
+
 module.exports = {
   entry: './src/js/index.js',
   output: {
@@ -10,8 +12,13 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   devServer: {
-    static: './dist',
     hot: true,
+    proxy: {
+      '/api/**': {
+        target: 'http://localhost:8081/.netlify/functions',
+        pathRewrite: { '^/api': '' },
+      },
+    },
   },
   infrastructureLogging: {
     level: 'error',
@@ -36,6 +43,7 @@ module.exports = {
     new Dotenv(),
     new HtmlWebpackPlugin({
       template: './src/html/index.html',
+      imageApiUrl: `${process.env.API_URL}/image`,
     }),
   ],
   resolve: {

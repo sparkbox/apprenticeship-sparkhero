@@ -1,15 +1,13 @@
-import HTTP_STATUS_CODES from '../utilities/httpStatusCodes.js';
-import { heroIdIsValid, getHeroById } from '../utilities/utilities.js';
+const { heroIdIsValid, getHeroById } = require('../utilities/utilities.js');
 
-export default (r, h) => {
-  const { id } = r.params;
+module.exports = (id) => {
   const idNumber = Number(id);
 
   if (!heroIdIsValid(idNumber)) {
-    return h.response({ statusText: `Hero ${id} not found` }).code(HTTP_STATUS_CODES.BAD_REQUEST);
+    throw new Error(`Hero "${id}" not found.`);
   }
 
   const hero = getHeroById(idNumber);
 
-  return h.response(hero).code(HTTP_STATUS_CODES.OKAY);
+  return hero;
 };

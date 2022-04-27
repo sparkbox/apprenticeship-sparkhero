@@ -1,3 +1,3 @@
-import { allHeros } from '../utilities/utilities.js';
+const { allHeros } = require('../utilities/utilities.js');
 
-export default () => allHeros;
+module.exports = () => allHeros;
