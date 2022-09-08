@@ -27,7 +27,7 @@ export const characterHTML = `
 
 export default function renderCharacters(arr) {
   console.log(arr);
-  for (let i = 0; i < 4; i += 1) {
+  for (let i = 0; i < arr.length; i += 1) {
     // Create hero card element, give it classes, and insert the characterHTML into it.
     const heroNode = document.createElement('li');
     heroNode.classList.add('hero');
