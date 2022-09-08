@@ -11,9 +11,9 @@ export const getCharacterById = async (id) => {
 
 export const getCharactersAll = async () => {
   try {
-    return get(`${process.env.API_URL}/all`);
+    return get(`${process.env.API_URL}/all/`);
   } catch (error) {
-    console.error(`Error fetching all characters: ${error.message}`);
+    console.error(`Error fetching characters: ${error.message}`);
     return [];
   }
 };
