@@ -31,7 +31,7 @@ export const createHeroListElement = () => {
   return heroNode;
 };
 
-const insertCharacterHTML = (heroNode) => {
+export const insertCharacterHTML = (heroNode) => {
   heroNode.insertAdjacentHTML('beforeend', characterHTML);
 };
 

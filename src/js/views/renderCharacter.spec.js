@@ -1,4 +1,7 @@
-import { characterHTML } from './renderCharacter';
+/**
+ * @jest-environment jsdom
+ */
+import { characterHTML, createHeroListElement, insertCharacterHTML } from './renderCharacter';
 
 const testCharacterHTML = `
     <div class="hero__inner">
@@ -30,5 +33,38 @@ const testCharacterHTML = `
 describe('renderCharacter.js', () => {
   it('characterHTML has the correct content', () => {
     expect(characterHTML).toEqual(testCharacterHTML);
+  });
+
+  // easier to read test if your break into individual function
+  // this one adds hero class for li
+  describe('createHeroListElement', () => {
+    it('creates an li with the class hero', () => {
+      const listElement = createHeroListElement();
+      expect(listElement.classList.contains('hero')).toBe(true);
+    });
+  });
+  describe('insertCharacterHTML', () => {
+    it('inserts character HTML at the end of a node', () => {
+      // arrange
+      // create div DOM node for testing with some <p> stuff in it already
+      document.body.innerHTML = `
+        <div>
+          <p>This is a placeholder</p>
+        </div>
+      `;
+      console.log({ document });
+
+      // act
+      // call insertCharacterHTML into the div
+      const element = document.querySelector('p');
+      insertCharacterHTML(element);
+      console.log({ element });
+
+      // assert
+      // check the DOM node hero_inner to see if it has the placeholder content in it
+      const characterElement = document.querySelector('.hero__inner');
+      console.log({ characterElement });
+      expect(characterElement).not.toBeNull();
+    });
   });
 });
