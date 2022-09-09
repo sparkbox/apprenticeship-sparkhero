@@ -25,13 +25,22 @@ export const characterHTML = `
     </div>
 `;
 
+export const createHeroListElement = () => {
+  const heroNode = document.createElement('li');
+  heroNode.classList.add('hero');
+  return heroNode;
+};
+
+const insertCharacterHTML = (heroNode) => {
+  heroNode.insertAdjacentHTML('beforeend', characterHTML);
+};
+
 export default function renderCharacters(arr) {
   console.log(arr);
   for (let i = 0; i < arr.length; i += 1) {
     // Create hero card element, give it classes, and insert the characterHTML into it.
-    const heroNode = document.createElement('li');
-    heroNode.classList.add('hero');
-    heroNode.insertAdjacentHTML('beforeend', characterHTML);
+    const heroNode = createHeroListElement();
+    insertCharacterHTML(heroNode);
     // Append hero card to the hero's list.
     document.getElementById('hero-list').appendChild(heroNode);
   }
