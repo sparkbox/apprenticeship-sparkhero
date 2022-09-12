@@ -36,12 +36,11 @@ export const insertCharacterHTML = (heroNode) => {
 };
 
 export default function renderCharacters(arr) {
-  console.log(arr);
-  for (let i = 0; i < arr.length; i += 1) {
+  arr.forEach((element) => {
     // Create hero card element, give it classes, and insert the characterHTML into it.
     const heroNode = createHeroListElement();
     insertCharacterHTML(heroNode);
     // Append hero card to the hero's list.
     document.getElementById('hero-list').appendChild(heroNode);
-  }
+  });
 }
