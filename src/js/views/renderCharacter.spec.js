@@ -52,18 +52,15 @@ describe('renderCharacter.js', () => {
           <p>This is a placeholder</p>
         </div>
       `;
-      console.log({ document });
 
       // act
       // call insertCharacterHTML into the div
       const element = document.querySelector('p');
       insertCharacterHTML(element);
-      console.log({ element });
 
       // assert
       // check the DOM node hero_inner to see if it has the placeholder content in it
       const characterElement = document.querySelector('.hero__inner');
-      console.log({ characterElement });
       expect(characterElement).not.toBeNull();
     });
   });
