@@ -36,6 +36,7 @@ export const insertCharacterHTML = (heroNode) => {
 };
 
 export default function renderCharacters(arr) {
+// eslint-disable-next-line no-unused-vars
   arr.forEach((element) => {
     // Create hero card element, give it classes, and insert the characterHTML into it.
     const heroNode = createHeroListElement();
