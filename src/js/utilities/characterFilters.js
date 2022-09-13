@@ -1,10 +1,11 @@
-/*  getFilteredCharactersByAlignment
-*   @param {[Character]} Character array to filter
-*   @param {String}   Alignment of characters in output arr
-*/
+/**
+ * getFilteredCharacterByAlignment
+ * @param {Character[]}   characters  Character array to filter
+ * @param {String}        alignment   Alignment of characters in output array
+ * @returns {Character[]} Filtered character array
+ */
 export function getFilteredCharactersByAlignment(characters, alignment) {
-  const result = characters.filter((char) => char.biography.alignment === alignment);
-  return result;
+  return characters.filter((char) => char.biography.alignment === alignment);
 }
 
 // Takes an array of characters, and a publisher to filter by.

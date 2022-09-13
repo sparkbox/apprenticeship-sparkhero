@@ -22,7 +22,8 @@ describe('getFilteredCharactersByAlignment', () => {
       biography: {
         alignment: 'bad',
       },
-    }];
+    },
+  ];
 
   it('returns a filtered array of only "good" characters', () => {
     const goodCharacters = getFilteredCharactersByAlignment(characters, 'good');
