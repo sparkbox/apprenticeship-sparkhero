@@ -25,6 +25,16 @@
           <input type="radio" id="villain" name="role" value="bad">
           <label for="villain">Villain</label>
         </div>
+        <div id="hero-filter-sort" class="toolbar-utility">
+          <h3 class="toolbar-utility__header" id="sort-select">Sort</h3>
+          <select name="sort-by-powerstats" aria-labelledby="sort-select">
+            <option value="none" selected>None</option>
+            <option value="name">Name</option>
+            <option value="intelligence">Intelligence</option>
+            <option value="strength">Strength</option>
+            <option value="combat">Combat</option>
+          </select>
+        </div>
       </div>
       <ul id="hero-list" class="hero-list"></ul>
     </main>
