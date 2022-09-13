@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import { characterHTML, createHeroListElement, insertCharacterHTML } from './renderCharacter';
-
+// eslint-disable-next-line no-unused-vars
 const testCharacterHTML = `
     <div class="hero__inner">
         <h3 class="hero__name">Spider-Man</h3>
@@ -31,8 +31,23 @@ const testCharacterHTML = `
 `;
 
 describe('renderCharacter.js', () => {
-  it('characterHTML has the correct content', () => {
-    expect(characterHTML).toEqual(testCharacterHTML);
+  it('characterHTML returns dynamic values for character stats and name', () => {
+    // eslint-disable-next-line max-len
+    const heroName = 'Test Hero';
+    const heroIntelligence = 10;
+    const heroStrength = 10;
+    const heroCombat = 10;
+    // eslint-disable-next-line max-len
+    // tests return value of this
+    const returnedHTML = characterHTML(heroName, heroIntelligence, heroStrength, heroCombat);
+
+    expect(returnedHTML).toContain(`${heroName}`);
+    // eslint-disable-next-line max-len
+    // the following values are numbers, but we must convert to string because
+    // .toContain() matcher deals with strings
+    expect(returnedHTML).toContain(`Intelligence: ${heroIntelligence.toString()}`);
+    expect(returnedHTML).toContain(`Strength: ${heroStrength.toString()}`);
+    expect(returnedHTML).toContain(`Combat: ${heroCombat.toString()}`);
   });
 
   // easier to read test if your break into individual function

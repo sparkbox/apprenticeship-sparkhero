@@ -1,24 +1,24 @@
-export const characterHTML = `
+export const characterHTML = (heroName, heroIntelligence, heroStrength, heroCombat) => `
     <div class="hero__inner">
-        <h3 class="hero__name">Spider-Man</h3>
+        <h3 class="hero__name">${heroName}</h3>
         <img class="hero__image" src="${process.env.API_URL}/image/620" width="100%" height="auto" />
         <ul class="hero__powerstats">
             <li class="hero__powerstat hero__powerstat--intelligence">
                 <p class="hero__powerstat-label">Intelligence</p>
-                <div class="hero__powerstat-graph" style="width: 100%">
-                    <span class="visually-hidden">Intelligence: 100</span>
+                <div class="hero__powerstat-graph" style="width: ${heroIntelligence}%">
+                    <span class="visually-hidden">Intelligence:${heroIntelligence}</span>
                 </div>
             </li>
             <li class="hero__powerstat hero__powerstat--strength">
                 <p class="hero__powerstat-label">Strength</p>
-                <div class="hero__powerstat-graph" style="width: 26%">
-                    <span class="visually-hidden">Strength: 26</span>
+                <div class="hero__powerstat-graph" style="width: ${heroStrength}%">
+                    <span class="visually-hidden">Strength: ${heroStrength}</span>
                 </div>
             </li>
             <li class="hero__powerstat hero__powerstat--combat">
                 <p class="hero__powerstat-label">Combat</p>
-                <div class="hero__powerstat-graph" style="width: 100%">
-                    <span class="visually-hidden">Combat: 100</span>
+                <div class="hero__powerstat-graph" style="width: ${heroCombat}%">
+                    <span class="visually-hidden">Combat: ${heroCombat}</span>
                 </div>
             </li>
         </ul>
@@ -31,16 +31,23 @@ export const createHeroListElement = () => {
   return heroNode;
 };
 
-export const insertCharacterHTML = (heroNode) => {
-  heroNode.insertAdjacentHTML('beforeend', characterHTML);
+// eslint-disable-next-line max-len
+export const insertCharacterHTML = (heroNode, heroName, heroIntelligence, heroStrength, heroCombat) => {
+  heroNode.insertAdjacentHTML('beforeend', characterHTML(heroName, heroIntelligence, heroStrength, heroCombat));
 };
 
 export default function renderCharacters(arr) {
 // eslint-disable-next-line no-unused-vars
   arr.forEach((element) => {
+    console.log(element);
+    const heroName = element.name;
+    const heroIntelligence = element.powerstats.intelligence;
+    const heroStrength = element.powerstats.strength;
+    const heroCombat = element.powerstats.combat;
+
     // Create hero card element, give it classes, and insert the characterHTML into it.
     const heroNode = createHeroListElement();
-    insertCharacterHTML(heroNode);
+    insertCharacterHTML(heroNode, heroName, heroIntelligence, heroStrength, heroCombat);
     // Append hero card to the hero's list.
     document.getElementById('hero-list').appendChild(heroNode);
   });
