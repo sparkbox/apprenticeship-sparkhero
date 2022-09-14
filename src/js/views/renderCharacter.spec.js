@@ -37,9 +37,11 @@ describe('renderCharacter.js', () => {
     const heroIntelligence = 10;
     const heroStrength = 10;
     const heroCombat = 10;
+    const herosImage = 4;
     // eslint-disable-next-line max-len
     // tests return value of this
-    const returnedHTML = characterHTML(heroName, heroIntelligence, heroStrength, heroCombat);
+    // eslint-disable-next-line max-len
+    const returnedHTML = characterHTML(heroName, heroIntelligence, heroStrength, heroCombat, herosImage);
 
     expect(returnedHTML).toContain(`${heroName}`);
     // eslint-disable-next-line max-len
@@ -48,6 +50,7 @@ describe('renderCharacter.js', () => {
     expect(returnedHTML).toContain(`Intelligence: ${heroIntelligence.toString()}`);
     expect(returnedHTML).toContain(`Strength: ${heroStrength.toString()}`);
     expect(returnedHTML).toContain(`Combat: ${heroCombat.toString()}`);
+    expect(returnedHTML).toContain(`/image/${herosImage.toString()}`);
   });
 
   // easier to read test if your break into individual function
