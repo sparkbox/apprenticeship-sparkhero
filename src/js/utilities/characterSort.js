@@ -9,12 +9,19 @@ function getCharactersSortedByName(characters) {
     return 0; // a and b aren't moved
   });
 }
-
+function getSortedCharactersByPowerStat(characters, powerstat) {
+  powerstat.toLowerCase();
+  return characters.sort((a, b) => a.powerstats[powerstat] - b.powerstats[powerstat]);
+}
 // Returns an sorted array of Character objects, depending on the string input.
 export function getSortedCharacters(characters, sort) {
   switch (sort) {
     case 'name':
       return getCharactersSortedByName(characters);
+    case 'intelligence':
+    case 'strength':
+    case 'combat':
+      return getSortedCharactersByPowerStat(characters, sort);
     default:
       return characters;
   }

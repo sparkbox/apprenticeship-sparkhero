@@ -57,4 +57,108 @@ describe('getSortedCharacters', () => {
     outOfOrderArr = [outOfOrderArr[1], outOfOrderArr[0]];
     expect(getSortedCharacters(outOfOrderArr, 'name')).toEqual(orderedTestArray);
   });
+
+  it('returns the unsorted array of characters when no valid powerstat argument is given', () => {
+    const MOCK_CHARACTER_ARRAY = [
+      {
+        name: 'Mock character one',
+        powerstats: {
+          intelligence: 38,
+          strength: 68,
+          speed: 17,
+          durability: 80,
+          power: 24,
+          combat: 6,
+        },
+      },
+      {
+        name: 'Mock character two',
+        powerstats: {
+          intelligence: 76,
+          strength: 50,
+          speed: 17,
+          durability: 80,
+          power: 24,
+          combat: 2,
+        },
+      },
+    ];
+    expect(getSortedCharacters(MOCK_CHARACTER_ARRAY, '')).toEqual(MOCK_CHARACTER_ARRAY);
+    expect(getSortedCharacters(MOCK_CHARACTER_ARRAY, 'durability')).toEqual(MOCK_CHARACTER_ARRAY);
+  });
+  // if the intelligence/strength/combat powerstats are given...
+  it('sorts the array lowest to highest based on the value of the powerstat argument', () => {
+    const characterArray = [
+      {
+        name: 'Michael Scott',
+        powerstats: {
+          intelligence: 38,
+          strength: 68,
+          speed: 35,
+          durability: 53,
+          power: 49,
+          combat: 6,
+        },
+      },
+      {
+        name: 'Jim Halpert',
+        powerstats: {
+          intelligence: 76,
+          strength: 50,
+          speed: 75,
+          durability: 17,
+          power: 34,
+          combat: 2,
+        },
+      },
+      {
+        name: 'Dwight Schrute',
+        powerstats: {
+          intelligence: 83,
+          strength: 70,
+          speed: 77,
+          durability: 80,
+          power: 44,
+          combat: 80,
+        },
+      },
+    ];
+    const expectedArray = [
+      {
+        name: 'Jim Halpert',
+        powerstats: {
+          intelligence: 76,
+          strength: 50,
+          speed: 75,
+          durability: 17,
+          power: 34,
+          combat: 2,
+        },
+      },
+      {
+        name: 'Michael Scott',
+        powerstats: {
+          intelligence: 38,
+          strength: 68,
+          speed: 35,
+          durability: 53,
+          power: 49,
+          combat: 6,
+        },
+      },
+      {
+        name: 'Dwight Schrute',
+        powerstats: {
+          intelligence: 83,
+          strength: 70,
+          speed: 77,
+          durability: 80,
+          power: 44,
+          combat: 80,
+        },
+      },
+    ];
+    const sortedArray = getSortedCharacters(characterArray, 'strength');
+    expect(sortedArray).toEqual(expectedArray);
+  });
 });
