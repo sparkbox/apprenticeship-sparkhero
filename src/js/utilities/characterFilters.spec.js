@@ -47,7 +47,7 @@ function makeTestArray() {
 
 describe('characterFilters.js', () => {
   it('Should return an array of Characters filtered by publisher', () => {
-    const filteredList = getFilteredCharactersByPublisher(makeTestArray(), 'Marvel Comics');
+    const filteredList = getFilteredCharactersByPublisher(makeTestArray(), ['Marvel Comics']);
     filteredList.forEach((element) => {
       expect(element.biography.publisher).toBe('Marvel Comics');
     });

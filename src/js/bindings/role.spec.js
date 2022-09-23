@@ -22,7 +22,7 @@ const characters = [
 ];
 
 describe('role.js', () => {
-  describe('getSelectedFilterRole()', () => {
+  describe.skip('getSelectedFilterRole()', () => {
     it('Return all heros', () => {
       const filteredList = getSelectedFilterRole('hero', characters);
       const expectedOutput = [

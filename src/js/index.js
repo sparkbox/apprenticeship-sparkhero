@@ -1,35 +1,45 @@
 import '@/assets/fonts/Bangers/index.scss';
 import '@/assets/fonts/LeagueSpartan/index.scss';
 import '@/assets/scss/base.scss';
-// import { getCharacterById } from '@/js/services/characterService.js';
 import { getCharactersAll } from '@/js/services/characterService.js';
 import renderCharacters from './views/renderCharacter';
-// eslint-disable-next-line no-unused-vars
 import { getSelectedFilterRole, bindCharacterFilterRole } from './bindings/role';
 import { bindCharacterFilterPublisher, getSelectedFilterPublisher } from './bindings/publisher';
+import { bindCharacterSort, getSelectedSortOption } from './bindings/sort';
+import { getFilteredCharactersByPublisher, getFilteredCharactersByAlignment }
+  from './utilities/characterFilters';
+import { getSortedCharacters } from './utilities/characterSort';
 
-// filter characters by publishers
-export function getFilteredCharactersByPublisher(characters, publishers) {
-  // eslint-disable-next-line max-len
-  // create a copy of characters array and filter by character then return a list of characters who have a publisher value.
-  const filteredCharactersByPublisher = [...characters]
-    .filter((character) => publishers
-      .includes(character.biography.publisher));
-  return filteredCharactersByPublisher;
-}
-
-async function characterFilterOrSortingUpdated() {
-  // get filtered publishers--look at Dom, see what checkboxes are checked
+// characterFilterOrSortingUpdated should take an array of characters
+// it changes the publisher filter, then the role filter, and finally sorts by powerstat or name
+const characterFilterOrSortingUpdated = (characters) => () => {
+  // our characters array
+  // get the selected publisher(s)
   const publishers = getSelectedFilterPublisher();
-  // get all characters
-  const characters = await getCharactersAll();
-  const filteredCharacters = getFilteredCharactersByPublisher(characters, publishers);
-  renderCharacters(filteredCharacters);
-}
+  // filter the list of characters by their publisher(s)
+  const filteredByPublisherCharacters = getFilteredCharactersByPublisher(characters, publishers);
+  // get selected role/alignment
+  const roleSelection = getSelectedFilterRole();
+  // filter the list of characters again
+  const filteredByAlignmentCharacters = getFilteredCharactersByAlignment(
+    filteredByPublisherCharacters,
+    roleSelection,
+  );
+  // get the selected sorting option from the dropdown
+  const sortSelection = getSelectedSortOption();
+  // sort the list based on powerstat or name (or none)
+  const sortedCharacters = getSortedCharacters(filteredByAlignmentCharacters, sortSelection);
+  // re-render the newest list of filtered & sorted characters
+  renderCharacters(sortedCharacters);
+};
 
 (async () => {
   const characters = await getCharactersAll();
   renderCharacters(characters);
-})();
 
-bindCharacterFilterPublisher(characterFilterOrSortingUpdated);
+  const updateFilters = characterFilterOrSortingUpdated(characters);
+
+  bindCharacterFilterPublisher(updateFilters);
+  bindCharacterFilterRole(updateFilters);
+  bindCharacterSort(updateFilters);
+})();

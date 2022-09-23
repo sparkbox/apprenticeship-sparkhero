@@ -90,10 +90,12 @@ describe('getSortedCharacters', () => {
   });
 
   // if the intelligence/strength/combat powerstats are given...
-  it('sorts the array lowest to highest based on the value of the powerstat argument', () => {
+  it('sorts the array highest to lowest based on the value of the powerstat argument', () => {
+    // original array from above function is 1, 2, 3 by strength
     const orderedCharacterArray = createTestArray();
     const [a, b, c] = createTestArray();
-    const outOfOrderArr = [c, b, a];
-    expect(getSortedCharacters(outOfOrderArr, 'strength')).toEqual(orderedCharacterArray);
+    // once that goes through the sorting function, it should come out as sortedArray (3, 2, 1)
+    const sortedArray = [c, b, a];
+    expect(getSortedCharacters(orderedCharacterArray, 'strength')).toEqual(sortedArray);
   });
 });
