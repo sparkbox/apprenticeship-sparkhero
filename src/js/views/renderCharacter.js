@@ -37,7 +37,10 @@ export const insertCharacterHTML = (heroNode, heroName, heroIntelligence, heroSt
 };
 
 export default function renderCharacters(characters) {
-// eslint-disable-next-line no-unused-vars
+  // clears previous rendered characters
+  const ul = document.getElementById('hero-list');
+  ul.innerHTML = '';
+  // eslint-disable-next-line no-unused-vars
   characters.forEach((character) => {
     // add hero name, stats, and images to card
     const heroName = character.name;
@@ -49,6 +52,6 @@ export default function renderCharacters(characters) {
     const heroNode = createHeroListElement();
     insertCharacterHTML(heroNode, heroName, heroIntelligence, heroStrength, heroCombat, herosImage);
     // Append hero card to the hero's list.
-    document.getElementById('hero-list').appendChild(heroNode);
+    ul.appendChild(heroNode);
   });
 }

@@ -2,6 +2,7 @@
  * @jest-environment jsdom
  */
 import { characterHTML, createHeroListElement, insertCharacterHTML } from './renderCharacter';
+
 // eslint-disable-next-line no-unused-vars
 const testCharacterHTML = `
     <div class="hero__inner">
@@ -31,6 +32,7 @@ const testCharacterHTML = `
 `;
 
 describe('renderCharacter.js', () => {
+  // Test: dynamic hero name and stats
   it('characterHTML returns dynamic values for character stats and name', () => {
     // eslint-disable-next-line max-len
     const heroName = 'Test Hero';
@@ -53,8 +55,7 @@ describe('renderCharacter.js', () => {
     expect(returnedHTML).toContain(`/image/${herosImage.toString()}`);
   });
 
-  // easier to read test if your break into individual function
-  // this one adds hero class for li
+  // Test: adds hero class for li
   describe('createHeroListElement', () => {
     it('creates an li with the class hero', () => {
       const listElement = createHeroListElement();
