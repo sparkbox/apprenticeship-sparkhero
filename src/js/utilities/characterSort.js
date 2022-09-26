@@ -11,8 +11,8 @@ function getCharactersSortedByName(characters) {
 }
 
 function getSortedCharactersByPowerStat(characters, powerstat) {
-  powerstat.toLowerCase();
-  return characters.sort((a, b) => a.powerstats[powerstat] - b.powerstats[powerstat]);
+  // eslint-disable-next-line max-len
+  return characters.sort((a, b) => a.powerstats[powerstat.toLowerCase()] - b.powerstats[powerstat.toLowerCase()]);
 }
 
 function getSortedCharacterById(characters) {
