@@ -1,57 +1,57 @@
+/**
+ * @jest-environment jsdom
+*/
+
 import { getSelectedFilterRole } from './role';
 
-const characters = [
-  {
-    name: 'person1',
-    biography: {
-      alignment: 'good',
-    },
-  },
-  {
-    name: 'person2',
-    biography: {
-      alignment: 'neutral',
-    },
-  },
-  {
-    name: 'person3',
-    biography: {
-      alignment: 'bad',
-    },
-  },
-];
-
 describe('role.js', () => {
-  describe.skip('getSelectedFilterRole()', () => {
-    it('Return all heros', () => {
-      const filteredList = getSelectedFilterRole('hero', characters);
-      const expectedOutput = [
-        {
-          name: 'person1',
-          biography: {
-            alignment: 'good',
-          },
-        },
-      ];
-      expect(filteredList).toEqual(expectedOutput);
+  describe('getSelectedFilterRole()', () => {
+    it('Return the "good" alignment when selecting the hero button', () => {
+      document.body.innerHTML = `
+        <div id="hero-filter-role" class="toolbar-utility">
+          <h3 class="toolbar-utility__header">Role</h3>
+          <input type="radio" id="all" name="role" value="all">
+          <label for="all">All</label>
+          <input type="radio" id="hero" name="role" value="good" checked>
+          <label for="hero">Hero</label>
+          <input type="radio" id="villain" name="role" value="bad">
+          <label for="villain">Villain</label>
+        </div>
+      `;
+
+      expect(getSelectedFilterRole()).toEqual('good');
     });
 
-    it('Return all villains', () => {
-      const filteredList = getSelectedFilterRole('villain', characters);
-      const expectedOutput = [
-        {
-          name: 'person3',
-          biography: {
-            alignment: 'bad',
-          },
-        },
-      ];
-      expect(filteredList).toEqual(expectedOutput);
+    it('Return the "bad" alignment when selecting the villain button', () => {
+      document.body.innerHTML = `
+        <div id="hero-filter-role" class="toolbar-utility">
+          <h3 class="toolbar-utility__header">Role</h3>
+          <input type="radio" id="all" name="role" value="all">
+          <label for="all">All</label>
+          <input type="radio" id="hero" name="role" value="good">
+          <label for="hero">Hero</label>
+          <input type="radio" id="villain" name="role" value="bad" checked>
+          <label for="villain">Villain</label>
+        </div>
+      `;
+
+      expect(getSelectedFilterRole()).toEqual('bad');
     });
 
-    it('Return everyone', () => {
-      const filteredList = getSelectedFilterRole('all', characters);
-      expect(filteredList).toEqual(characters);
+    it('Return "all" when selecting the filter "all" button', () => {
+      document.body.innerHTML = `
+        <div id="hero-filter-role" class="toolbar-utility">
+          <h3 class="toolbar-utility__header">Role</h3>
+          <input type="radio" id="all" name="role" value="all" checked>
+          <label for="all">All</label>
+          <input type="radio" id="hero" name="role" value="good">
+          <label for="hero">Hero</label>
+          <input type="radio" id="villain" name="role" value="bad">
+          <label for="villain">Villain</label>
+        </div>
+      `;
+
+      expect(getSelectedFilterRole()).toEqual('all');
     });
   });
 });
